@@ -12,6 +12,7 @@ enum AppAction: Equatable {
     case dismissAuthorizationStateAlert
     case recordButtonTapped
     case speechRecognizerAuthorizationStatusResponse(SFSpeechRecognizerAuthorizationStatus)
+    case speech(Result<SpeechClient.RecognitionTaskAction, SpeechClient.RecognitionTaskError>)
 }
 
 struct AppEnvironment {
@@ -60,10 +61,34 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
             return .none
 
         case .authorized:
-            // ToDo: Start recording
-            return .none
+            let request = SFSpeechAudioBufferRecognitionRequest()
+            request.shouldReportPartialResults = true
+            request.requiresOnDeviceRecognition = false
+            return environment.speechClient.recognitionTask(request)
+                .catchToEffect(AppAction.speech)
 
         @unknown default:
+            return .none
+        }
+
+    case let .speech(.success(action)):
+        switch action {
+        case .availabilityDidChange:
+            return .none
+
+        case let .taskResult(result):
+            state.transcribedText = result.bestTranscription.formattedString
+            return .none
+        }
+
+    case let .speech(.failure(error)):
+        switch error {
+        case .couldntStartAudioEngine, .couldntConfigureAudioSession:
+            state.alert = .init(title: .init("Problem with audio device. Please try again."))
+            return .none
+
+        case .taskError:
+            state.alert = .init(title: .init("An error occurred while transcribing. Please try again."))
             return .none
         }
     }

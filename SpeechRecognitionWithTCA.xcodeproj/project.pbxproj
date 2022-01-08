@@ -13,6 +13,7 @@
 		1D6C70422788732A007DD48C /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 1D6C70412788732A007DD48C /* ComposableArchitecture */; };
 		1D6C704427887435007DD48C /* SpeechRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6C704327887435007DD48C /* SpeechRecognition.swift */; };
 		1D6C704727888776007DD48C /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6C704627888776007DD48C /* Client.swift */; };
+		1D6C704A278943DF007DD48C /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6C7049278943DF007DD48C /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		1D6C704327887435007DD48C /* SpeechRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognition.swift; sourceTree = "<group>"; };
 		1D6C704627888776007DD48C /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		1D6C704827893ABF007DD48C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1D6C7049278943DF007DD48C /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6C704627888776007DD48C /* Client.swift */,
+				1D6C7049278943DF007DD48C /* Models.swift */,
 			);
 			path = SpeechClient;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 				1D6C704427887435007DD48C /* SpeechRecognition.swift in Sources */,
 				1D6C704727888776007DD48C /* Client.swift in Sources */,
 				1D6C703127887128007DD48C /* SpeechRecognitionWithTCAApp.swift in Sources */,
+				1D6C704A278943DF007DD48C /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
