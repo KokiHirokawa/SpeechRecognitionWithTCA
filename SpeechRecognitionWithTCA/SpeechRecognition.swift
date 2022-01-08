@@ -34,8 +34,8 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
                 .map(AppAction.speechRecognizerAuthorizationStatusResponse)
                 .eraseToEffect()
         } else {
-            // ToDo: Finish to speech
-            return .none
+            return environment.speechClient.finishTask()
+                .fireAndForget()
         }
 
     case let .speechRecognizerAuthorizationStatusResponse(status):
@@ -89,10 +89,12 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
 
         case .taskError:
             state.alert = .init(title: .init("An error occurred while transcribing. Please try again."))
-            return .none
+            return environment.speechClient.finishTask()
+                .fireAndForget()
         }
     }
 }
+.debugActions(actionFormat: .labelsOnly)
 
 struct SpeechRecognitionView: View {
 

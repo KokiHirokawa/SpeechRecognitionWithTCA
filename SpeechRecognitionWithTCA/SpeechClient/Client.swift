@@ -3,6 +3,7 @@ import ComposableArchitecture
 import Speech
 
 struct SpeechClient {
+    var finishTask: () -> Effect<Never, Never>
     var recognitionTask: (SFSpeechAudioBufferRecognitionRequest) -> Effect<RecognitionTaskAction, RecognitionTaskError>
     var requestAuthorization: () -> Effect<SFSpeechRecognizerAuthorizationStatus, Never>
 
@@ -26,6 +27,13 @@ extension SpeechClient {
         var recognitionTask: SFSpeechRecognitionTask?
 
         return .init(
+            finishTask: {
+                .fireAndForget {
+                    audioEngine?.stop()
+                    inputNode?.removeTap(onBus: 0)
+                    recognitionTask?.finish()
+                }
+            },
             recognitionTask: { request in
                 .run { subscriber in
                     let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-USs"))!
