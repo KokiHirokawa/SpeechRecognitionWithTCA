@@ -8,20 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		1D6C703127887128007DD48C /* SpeechRecognitionWithTCAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6C703027887128007DD48C /* SpeechRecognitionWithTCAApp.swift */; };
-		1D6C703327887128007DD48C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6C703227887128007DD48C /* ContentView.swift */; };
 		1D6C70352788712A007DD48C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D6C70342788712A007DD48C /* Assets.xcassets */; };
 		1D6C70382788712A007DD48C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D6C70372788712A007DD48C /* Preview Assets.xcassets */; };
 		1D6C70422788732A007DD48C /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 1D6C70412788732A007DD48C /* ComposableArchitecture */; };
 		1D6C704427887435007DD48C /* SpeechRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6C704327887435007DD48C /* SpeechRecognition.swift */; };
+		1D6C704727888776007DD48C /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6C704627888776007DD48C /* Client.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D6C702D27887128007DD48C /* SpeechRecognitionWithTCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeechRecognitionWithTCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D6C703027887128007DD48C /* SpeechRecognitionWithTCAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionWithTCAApp.swift; sourceTree = "<group>"; };
-		1D6C703227887128007DD48C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1D6C70342788712A007DD48C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D6C70372788712A007DD48C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1D6C704327887435007DD48C /* SpeechRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognition.swift; sourceTree = "<group>"; };
+		1D6C704627888776007DD48C /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		1D6C704827893ABF007DD48C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +56,9 @@
 		1D6C702F27887128007DD48C /* SpeechRecognitionWithTCA */ = {
 			isa = PBXGroup;
 			children = (
+				1D6C704827893ABF007DD48C /* Info.plist */,
+				1D6C70452788876B007DD48C /* SpeechClient */,
 				1D6C703027887128007DD48C /* SpeechRecognitionWithTCAApp.swift */,
-				1D6C703227887128007DD48C /* ContentView.swift */,
 				1D6C704327887435007DD48C /* SpeechRecognition.swift */,
 				1D6C70342788712A007DD48C /* Assets.xcassets */,
 				1D6C70362788712A007DD48C /* Preview Content */,
@@ -70,6 +72,14 @@
 				1D6C70372788712A007DD48C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1D6C70452788876B007DD48C /* SpeechClient */ = {
+			isa = PBXGroup;
+			children = (
+				1D6C704627888776007DD48C /* Client.swift */,
+			);
+			path = SpeechClient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,8 +158,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D6C703327887128007DD48C /* ContentView.swift in Sources */,
 				1D6C704427887435007DD48C /* SpeechRecognition.swift in Sources */,
+				1D6C704727888776007DD48C /* Client.swift in Sources */,
 				1D6C703127887128007DD48C /* SpeechRecognitionWithTCAApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +294,9 @@
 				DEVELOPMENT_TEAM = 26UJM648L6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SpeechRecognitionWithTCA/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to transcribe your speech.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app needs access to transcribe your speech";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -313,6 +326,9 @@
 				DEVELOPMENT_TEAM = 26UJM648L6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SpeechRecognitionWithTCA/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to transcribe your speech.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app needs access to transcribe your speech";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
