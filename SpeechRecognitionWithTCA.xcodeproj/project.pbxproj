@@ -14,7 +14,18 @@
 		1D6C704427887435007DD48C /* SpeechRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6C704327887435007DD48C /* SpeechRecognition.swift */; };
 		1D6C704727888776007DD48C /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6C704627888776007DD48C /* Client.swift */; };
 		1D6C704A278943DF007DD48C /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6C7049278943DF007DD48C /* Models.swift */; };
+		1D8AC8D4278B394900E76524 /* SpeechRecognitionWithTCATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8AC8D3278B394900E76524 /* SpeechRecognitionWithTCATests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1D8AC8D5278B394900E76524 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1D6C702527887128007DD48C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D6C702C27887128007DD48C;
+			remoteInfo = SpeechRecognitionWithTCA;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1D6C702D27887128007DD48C /* SpeechRecognitionWithTCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeechRecognitionWithTCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -25,6 +36,8 @@
 		1D6C704627888776007DD48C /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		1D6C704827893ABF007DD48C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1D6C7049278943DF007DD48C /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		1D8AC8D1278B394900E76524 /* SpeechRecognitionWithTCATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeechRecognitionWithTCATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D8AC8D3278B394900E76524 /* SpeechRecognitionWithTCATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionWithTCATests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +49,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1D8AC8CE278B394900E76524 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -43,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6C702F27887128007DD48C /* SpeechRecognitionWithTCA */,
+				1D8AC8D2278B394900E76524 /* SpeechRecognitionWithTCATests */,
 				1D6C702E27887128007DD48C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6C702D27887128007DD48C /* SpeechRecognitionWithTCA.app */,
+				1D8AC8D1278B394900E76524 /* SpeechRecognitionWithTCATests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,6 +107,14 @@
 			path = SpeechClient;
 			sourceTree = "<group>";
 		};
+		1D8AC8D2278B394900E76524 /* SpeechRecognitionWithTCATests */ = {
+			isa = PBXGroup;
+			children = (
+				1D8AC8D3278B394900E76524 /* SpeechRecognitionWithTCATests.swift */,
+			);
+			path = SpeechRecognitionWithTCATests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -108,6 +138,24 @@
 			productReference = 1D6C702D27887128007DD48C /* SpeechRecognitionWithTCA.app */;
 			productType = "com.apple.product-type.application";
 		};
+		1D8AC8D0278B394900E76524 /* SpeechRecognitionWithTCATests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D8AC8D9278B394900E76524 /* Build configuration list for PBXNativeTarget "SpeechRecognitionWithTCATests" */;
+			buildPhases = (
+				1D8AC8CD278B394900E76524 /* Sources */,
+				1D8AC8CE278B394900E76524 /* Frameworks */,
+				1D8AC8CF278B394900E76524 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1D8AC8D6278B394900E76524 /* PBXTargetDependency */,
+			);
+			name = SpeechRecognitionWithTCATests;
+			productName = SpeechRecognitionWithTCATests;
+			productReference = 1D8AC8D1278B394900E76524 /* SpeechRecognitionWithTCATests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -115,11 +163,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1310;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					1D6C702C27887128007DD48C = {
 						CreatedOnToolsVersion = 13.1;
+					};
+					1D8AC8D0278B394900E76524 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 1D6C702C27887128007DD48C;
 					};
 				};
 			};
@@ -140,6 +192,7 @@
 			projectRoot = "";
 			targets = (
 				1D6C702C27887128007DD48C /* SpeechRecognitionWithTCA */,
+				1D8AC8D0278B394900E76524 /* SpeechRecognitionWithTCATests */,
 			);
 		};
 /* End PBXProject section */
@@ -151,6 +204,13 @@
 			files = (
 				1D6C70382788712A007DD48C /* Preview Assets.xcassets in Resources */,
 				1D6C70352788712A007DD48C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D8AC8CF278B394900E76524 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,7 +228,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1D8AC8CD278B394900E76524 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D8AC8D4278B394900E76524 /* SpeechRecognitionWithTCATests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1D8AC8D6278B394900E76524 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D6C702C27887128007DD48C /* SpeechRecognitionWithTCA */;
+			targetProxy = 1D8AC8D5278B394900E76524 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6C70392788712A007DD48C /* Debug */ = {
@@ -351,6 +427,44 @@
 			};
 			name = Release;
 		};
+		1D8AC8D7278B394900E76524 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 26UJM648L6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pihero.SpeechRecognitionWithTCATests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeechRecognitionWithTCA.app/SpeechRecognitionWithTCA";
+			};
+			name = Debug;
+		};
+		1D8AC8D8278B394900E76524 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 26UJM648L6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pihero.SpeechRecognitionWithTCATests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeechRecognitionWithTCA.app/SpeechRecognitionWithTCA";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -368,6 +482,15 @@
 			buildConfigurations = (
 				1D6C703C2788712A007DD48C /* Debug */,
 				1D6C703D2788712A007DD48C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1D8AC8D9278B394900E76524 /* Build configuration list for PBXNativeTarget "SpeechRecognitionWithTCATests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D8AC8D7278B394900E76524 /* Debug */,
+				1D8AC8D8278B394900E76524 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
