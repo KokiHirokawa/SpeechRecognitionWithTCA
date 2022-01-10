@@ -68,6 +68,98 @@ final class SpeechRecognitionTexts: XCTestCase {
             $0.isRecording = false
         }
     }
+
+    func testAllowAndRecord() {
+        let recognitionTaskSubject = PassthroughSubject<SpeechClient.RecognitionTaskAction, SpeechClient.RecognitionTaskError>()
+
+        var speechClient = SpeechClient.failing
+        speechClient.finishTask = {
+            .fireAndForget { recognitionTaskSubject.send(completion: .finished) }
+        }
+        speechClient.recognitionTask = { _ in
+            recognitionTaskSubject.eraseToEffect()
+        }
+        speechClient.requestAuthorization = { Effect(value: .authorized) }
+
+        let store = TestStore(
+            initialState: .init(),
+            reducer: appReducer,
+            environment: .init(mainQueue: .immediate, speechClient: speechClient)
+        )
+
+        let result = SpeechRecognitionResult(
+            bestTranscription: .init(formattedString: "Hello", segments: []),
+            isFinal: false,
+            speechRecognitionMetadata: nil,
+            transcriptions: []
+        )
+        var finalResult = result
+        finalResult.bestTranscription.formattedString = "Hello World"
+        finalResult.isFinal = true
+
+        store.send(.recordButtonTapped) {
+            $0.isRecording = true
+        }
+        store.receive(.speechRecognizerAuthorizationStatusResponse(.authorized))
+
+        recognitionTaskSubject.send(.taskResult(result))
+        store.receive(.speech(.success(.taskResult(result)))) {
+            $0.transcribedText = "Hello"
+        }
+
+        recognitionTaskSubject.send(.taskResult(finalResult))
+        store.receive(.speech(.success(.taskResult(finalResult)))) {
+            $0.transcribedText = "Hello World"
+        }
+    }
+
+    func testAudioSessionFailure() {
+        let recognitionTaskSubject = PassthroughSubject<SpeechClient.RecognitionTaskAction, SpeechClient.RecognitionTaskError>()
+
+        var speechClient = SpeechClient.failing
+        speechClient.recognitionTask = { _ in recognitionTaskSubject.eraseToEffect() }
+        speechClient.requestAuthorization = { Effect(value: .authorized) }
+
+        let store = TestStore(
+            initialState: .init(),
+            reducer: appReducer,
+            environment: .init(mainQueue: .immediate, speechClient: speechClient)
+        )
+
+        store.send(.recordButtonTapped) {
+            $0.isRecording = true
+        }
+        store.receive(.speechRecognizerAuthorizationStatusResponse(.authorized))
+
+        recognitionTaskSubject.send(completion: .failure(.couldntConfigureAudioSession))
+        store.receive(.speech(.failure(.couldntConfigureAudioSession))) {
+            $0.alert = .init(title: .init("Problem with audio device. Please try again."))
+        }
+    }
+
+    func testAudioEngineFailure() {
+        let recognitionTaskSubject = PassthroughSubject<SpeechClient.RecognitionTaskAction, SpeechClient.RecognitionTaskError>()
+
+        var speechClient = SpeechClient.failing
+        speechClient.recognitionTask = { _ in recognitionTaskSubject.eraseToEffect() }
+        speechClient.requestAuthorization = { Effect(value: .authorized) }
+
+        let store = TestStore(
+            initialState: .init(),
+            reducer: appReducer,
+            environment: .init(mainQueue: .immediate, speechClient: speechClient)
+        )
+
+        store.send(.recordButtonTapped) {
+            $0.isRecording = true
+        }
+        store.receive(.speechRecognizerAuthorizationStatusResponse(.authorized))
+
+        recognitionTaskSubject.send(completion: .failure(.couldntStartAudioEngine))
+        store.receive(.speech(.failure(.couldntStartAudioEngine))) {
+            $0.alert = .init(title: .init("Problem with audio device. Please try again."))
+        }
+    }
 }
 
 extension SpeechClient {
