@@ -78,7 +78,12 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
 
         case let .taskResult(result):
             state.transcribedText = result.bestTranscription.formattedString
-            return .none
+            if result.isFinal {
+                return environment.speechClient.finishTask()
+                    .fireAndForget()
+            } else {
+                return .none
+            }
         }
 
     case let .speech(.failure(error)):
